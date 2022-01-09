@@ -1,14 +1,11 @@
 package com.example.nnk.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
+@Document(collection="Food")
 public class Food {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private String name;
     private int price;
