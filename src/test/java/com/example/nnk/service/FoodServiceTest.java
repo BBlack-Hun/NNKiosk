@@ -6,12 +6,13 @@ import com.example.nnk.repository.MongoFoodRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
+@Transactional
 class FoodServiceTest {
 
     FoodRepository foodRepository;
@@ -21,10 +22,6 @@ class FoodServiceTest {
     void setUp() {
         foodRepository = new MongoFoodRepository();
         foodService = new FoodService(foodRepository);
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
@@ -52,27 +49,27 @@ class FoodServiceTest {
         food.setPrice(1500);
         food.setImgPath("..");
         food.setFoodType("면, 밀가루");
-        foodService.add(food);
+        food.set_id(foodService.add(food));
 
         Food food2 = new Food();
         food2.setName("치즈 라면");
         food2.setPrice(2500);
         food2.setImgPath("..");
         food2.setFoodType("면, 밀가루, 치즈");
-        foodService.add(food2);
+        food2.set_id(foodService.add(food2));
 
         Food food3 = new Food();
         food3.setName("원조 김밥");
         food3.setPrice(2000);
         food3.setImgPath("..");
         food3.setFoodType("밥, 김밥");
-        foodService.add(food3);
+        food3.set_id(foodService.add(food3));
 
         // when
         List<Food> findFoods = foodService.findAllFoods();
 
         // then
-
+        assertThat(findFoods.size()).isEqualTo(3);
     }
 
     @Test
@@ -103,6 +100,7 @@ class FoodServiceTest {
         List<Food> findFoods = foodService.findFoodByName("라면");
 
         // then
+        assertThat(findFoods.size()).isEqualTo(2);
     }
 
     @Test
@@ -133,6 +131,7 @@ class FoodServiceTest {
         List<Food> findFoods = foodService.findFoodByType("밥");
 
         // then
+        assertThat(findFoods.size()).isEqualTo(2);
     }
 
     @Test
