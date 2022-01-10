@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RequestMapping("api/v1/food")
 @RestController
@@ -19,39 +18,39 @@ public class FoodController {
         this.foodService = foodService;
     }
 
-    @PostMapping("/new")
-    public UUID create(Food food) {
+    @PostMapping
+    public String create(Food food) {
         return foodService.add(food);
     }
 
-    @GetMapping("/get/all")
+    @GetMapping
     public List<Food> getAllFoods() {
         return foodService.findAllFoods();
     }
 
-    @GetMapping("/get/{name}")
+    @GetMapping("/{name}")
     public List<Food> getFoodsByName(@PathVariable String name) {
         return foodService.findFoodByName(name);
     }
 
-    @GetMapping("/get/{id}")
-    public Optional<Food> getFoodById(@PathVariable UUID id) {
+    @GetMapping("/{id}")
+    public Optional<Food> getFoodById(@PathVariable String id) {
         return foodService.findFoodById(id);
     }
 
-    @GetMapping("/get/{foodType}")
+    @GetMapping("/{foodType}")
     public List<Food> getFoodByType(@PathVariable String foodType) {
         return foodService.findFoodByType(foodType);
     }
 
-    @PutMapping("/put/{id}")
-    public UUID update(@PathVariable UUID id,
+    @PutMapping("/{id}")
+    public String update(@PathVariable String id,
                        Food food) {
         return foodService.update(id, food);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public UUID delete(@PathVariable UUID id) {
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable String id) {
         return foodService.remove(id);
     }
 

@@ -13,7 +13,7 @@ public class MongoFoodRepository implements FoodRepository {
     }
 
     @Override
-    public Optional<Food> findById(UUID id) {
+    public Optional<Food> findById(String id) {
         return Optional.empty();
     }
 
@@ -33,12 +33,12 @@ public class MongoFoodRepository implements FoodRepository {
     }
 
     @Override
-    public Food update(UUID id, Food food) {
+    public Food update(String id, Food food) {
         return null;
     }
 
     @Override
-    public Food delete(UUID id) {
+    public Food delete(String id) {
         return null;
     }
 }

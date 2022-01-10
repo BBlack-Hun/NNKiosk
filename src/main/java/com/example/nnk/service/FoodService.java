@@ -16,16 +16,16 @@ public class FoodService {
         this.foodRepository = foodRepository;
     }
 
-    public UUID add(Food food) {
-        return foodRepository.save(food).getId();
+    public String add(Food food) {
+        return foodRepository.save(food).get_id();
     }
 
     public List<Food> findAllFoods() {
         return foodRepository.findAll();
     }
 
-    public Optional<Food> findFoodById(UUID uuid) {
-        return foodRepository.findById(uuid);
+    public Optional<Food> findFoodById(String id) {
+        return foodRepository.findById(id);
     }
 
     public List<Food> findFoodByName(String name) {
@@ -36,11 +36,11 @@ public class FoodService {
         return foodRepository.findByType(foodType);
     }
 
-    public UUID update(UUID id, Food food) {
-        return foodRepository.update(id, food).getId();
+    public String update(String id, Food food) {
+        return foodRepository.update(id, food).get_id();
     }
 
-    public UUID remove(UUID id) {
-        return foodRepository.delete(id).getId();
+    public String remove(String id) {
+        return foodRepository.delete(id).get_id();
     }
 }

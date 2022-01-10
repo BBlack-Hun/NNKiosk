@@ -9,10 +9,10 @@ import java.util.UUID;
 
 public interface FoodRepository {
     Food save(Food food);
-    Optional<Food> findById(UUID id);
+    Optional<Food> findById(String id);
     List<Food> findByName(String name);
     List<Food> findAll();
     List<Food> findByType(String foodType);
-    Food update(UUID id, Food food);
-    Food delete(UUID id);
+    Food update(String id, Food food);
+    Food delete(String id);
 }

@@ -1,34 +1,20 @@
 package com.example.nnk.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
 @Document(collection="Food")
+@Getter
+@Setter
 public class Food {
-    private UUID id;
+    @Id
+    private String _id;
     private String name;
     private int price;
     private String foodType;
     private String imgPath;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public String getFoodType() {
-        return foodType;
-    }
-
-    public String getImgPath() {
-        return imgPath;
-    }
 }
