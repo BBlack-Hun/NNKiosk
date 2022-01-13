@@ -52,7 +52,7 @@ public class FoodService {
         return repository.findAllFoodsByName(name);
     }
 
-    public List<Food> findFoodByType(String foodType) {
-        return null;
+    public List<Food> findFoodsByType(String foodType) {
+        return repository.findAllByfoodTypesIn(foodType);
     }
 }

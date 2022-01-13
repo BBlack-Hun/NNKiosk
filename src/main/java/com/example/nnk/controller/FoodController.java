@@ -61,6 +61,6 @@ public class FoodController {
 
     @GetMapping("/{foodType}")
     public List<Food> getFoodByType(@PathVariable String foodType) {
-        return foodService.findFoodByType(foodType);
+        return foodService.findFoodsByType(foodType);
     }
 }

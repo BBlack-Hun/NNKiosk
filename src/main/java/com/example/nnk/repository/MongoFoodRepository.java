@@ -9,4 +9,6 @@ import java.util.List;
 public interface MongoFoodRepository extends MongoRepository<Food, String>, FoodRepository {
     @Query("{name : {$regex : ?0 } }")
     public List<Food> findAllFoodsByName(String name);
+
+    public List<Food> findAllByfoodTypesIn(String foodTypes);
 }
