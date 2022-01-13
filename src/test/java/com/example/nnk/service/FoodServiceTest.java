@@ -1,27 +1,25 @@
 package com.example.nnk.service;
 
 import com.example.nnk.domain.Food;
-import com.example.nnk.repository.FoodRepository;
 import com.example.nnk.repository.MongoFoodRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@Transactional
+@SpringBootTest
 class FoodServiceTest {
+    @Autowired
+    MongoFoodRepository foodRepository;
+    @Autowired FoodService foodService;
 
-    FoodRepository foodRepository;
-    FoodService foodService;
-
-    @BeforeEach
-    void setUp() {
-        foodRepository = new MongoFoodRepository();
-        foodService = new FoodService(foodRepository);
+    @AfterEach
+    void tearDown() {
+        foodRepository.deleteAll();
     }
 
     @Test
@@ -49,21 +47,21 @@ class FoodServiceTest {
         food.setPrice(1500);
         food.setImgPath("..");
         food.setFoodType("면, 밀가루");
-        food.set_id(foodService.add(food));
+        foodService.add(food);
 
         Food food2 = new Food();
         food2.setName("치즈 라면");
         food2.setPrice(2500);
         food2.setImgPath("..");
         food2.setFoodType("면, 밀가루, 치즈");
-        food2.set_id(foodService.add(food2));
+        foodService.add(food2);
 
         Food food3 = new Food();
         food3.setName("원조 김밥");
         food3.setPrice(2000);
         food3.setImgPath("..");
         food3.setFoodType("밥, 김밥");
-        food3.set_id(foodService.add(food3));
+        foodService.add(food3);
 
         // when
         List<Food> findFoods = foodService.findAllFoods();
@@ -73,7 +71,7 @@ class FoodServiceTest {
     }
 
     @Test
-    void findFoodByName() {
+    void findFoodsByName() {
         // given
         Food food = new Food();
         food.setName("라면");
@@ -97,7 +95,7 @@ class FoodServiceTest {
         foodService.add(food3);
 
         // when
-        List<Food> findFoods = foodService.findFoodByName("라면");
+        List<Food> findFoods = foodService.findFoodsByName("라면");
 
         // then
         assertThat(findFoods.size()).isEqualTo(2);
@@ -170,8 +168,8 @@ class FoodServiceTest {
         String deleteId = foodService.remove(saveId);
 
         // then
-        Food findFood = foodService.findFoodById(deleteId).get();
+        List<Food> findFoods = foodService.findAllFoods();
         assertThat(saveId).isEqualTo(deleteId);
-        assertThat(findFood).isEqualTo(null);
+        assertThat(findFoods.size()).isEqualTo(0);
     }
 }

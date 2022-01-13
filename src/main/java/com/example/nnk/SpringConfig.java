@@ -1,23 +1,23 @@
 package com.example.nnk;
 
-import com.example.nnk.repository.FoodRepository;
 import com.example.nnk.repository.MongoFoodRepository;
 import com.example.nnk.service.FoodService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    @Bean
-    public FoodRepository foodRepository() {
-        return new MongoFoodRepository();
+    private final MongoFoodRepository foodRepository;
+
+    @Autowired
+    public SpringConfig(MongoFoodRepository foodRepository) {
+        this.foodRepository = foodRepository;
     }
 
     @Bean
     public FoodService foodService() {
-        return new FoodService(foodRepository());
+        return new FoodService(foodRepository);
     }
-
 }

@@ -24,13 +24,18 @@ public class FoodController {
     }
 
     @GetMapping
-    public List<Food> getAllFoods() {
+    public List<Food> getAll() {
         return foodService.findAllFoods();
     }
 
-    @GetMapping("/{name}")
-    public List<Food> getFoodsByName(@PathVariable String name) {
-        return foodService.findFoodByName(name);
+    @PutMapping
+    public List<Food> updateAll(List<Food> foods) {
+        return foodService.updateAllFoods(foods);
+    }
+
+    @DeleteMapping
+    public boolean deleteAll() {
+        return foodService.deleteAllFoods();
     }
 
     @GetMapping("/{id}")
@@ -38,14 +43,9 @@ public class FoodController {
         return foodService.findFoodById(id);
     }
 
-    @GetMapping("/{foodType}")
-    public List<Food> getFoodByType(@PathVariable String foodType) {
-        return foodService.findFoodByType(foodType);
-    }
-
     @PutMapping("/{id}")
     public String update(@PathVariable String id,
-                       Food food) {
+                         Food food) {
         return foodService.update(id, food);
     }
 
@@ -54,4 +54,13 @@ public class FoodController {
         return foodService.remove(id);
     }
 
+    @GetMapping("/{name}")
+    public List<Food> getFoodsByName(@PathVariable String name) {
+        return foodService.findFoodsByName(name);
+    }
+
+    @GetMapping("/{foodType}")
+    public List<Food> getFoodByType(@PathVariable String foodType) {
+        return foodService.findFoodByType(foodType);
+    }
 }
