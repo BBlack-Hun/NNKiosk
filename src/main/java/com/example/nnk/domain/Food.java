@@ -1,6 +1,5 @@
 package com.example.nnk.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Document(collection="Food")
@@ -21,4 +21,5 @@ public class Food {
     private int price;
     private List<String> foodTypes;
     private String imgPath;
+    private Map<String, Integer> ingredients;   // ingredients _id : how many use
 }
