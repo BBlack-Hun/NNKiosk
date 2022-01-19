@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: nnk
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
