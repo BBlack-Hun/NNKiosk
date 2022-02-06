@@ -3,14 +3,25 @@ package com.example.nnk.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "api/v1/sale")
 public class SaleController {
 
+    // Log 샏성
     @PostMapping("/")
-    public void crateSales(@RequestBody String Log) {
+    public void crateSaleLog(@RequestBody String Log) {
         System.out.println("create Sale Log");
-        System.out.println("test");
     }
+
+    // Log 조회
+    @GetMapping("/")
+    public Map<String, Object> GetAllSaleLogs() {
+        Map<String, Object> returnMap = new HashMap<>();
+        return returnMap;
+    }
+
 
 }
