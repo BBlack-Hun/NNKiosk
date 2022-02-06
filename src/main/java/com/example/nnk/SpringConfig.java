@@ -1,7 +1,7 @@
 package com.example.nnk;
 
-import com.example.nnk.repository.MongoFoodRepository;
-import com.example.nnk.service.FoodService;
+import com.example.nnk.food.repository.MongoFoodRepository;
+import com.example.nnk.food.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

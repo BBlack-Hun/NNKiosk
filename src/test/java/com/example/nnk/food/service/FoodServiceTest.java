@@ -1,7 +1,7 @@
-package com.example.nnk.service;
+package com.example.nnk.food.service;
 
-import com.example.nnk.domain.Food;
-import com.example.nnk.repository.MongoFoodRepository;
+import com.example.nnk.food.domain.Food;
+import com.example.nnk.food.repository.MongoFoodRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

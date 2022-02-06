@@ -1,7 +1,7 @@
-package com.example.nnk.controller;
+package com.example.nnk.food.controller;
 
-import com.example.nnk.domain.Food;
-import com.example.nnk.service.FoodService;
+import com.example.nnk.food.domain.Food;
+import com.example.nnk.food.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
