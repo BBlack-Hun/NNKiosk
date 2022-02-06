@@ -1,0 +1,16 @@
+package com.example.nnk.controller;
+
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(value = "api/v1/sale")
+public class SaleController {
+
+    @PostMapping("/")
+    public void crateSales(@RequestBody String Log) {
+        System.out.println("create Sale Log");
+        System.out.println("test");
+    }
+
+}
