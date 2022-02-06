@@ -1,6 +1,6 @@
-package com.example.nnk.repository;
+package com.example.nnk.food.repository;
 
-import com.example.nnk.domain.Food;
+import com.example.nnk.food.domain.Food;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
