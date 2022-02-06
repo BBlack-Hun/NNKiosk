@@ -1,4 +1,4 @@
-package com.example.nnk.domain;
+package com.example.nnk.food.domain;
 
 import lombok.Data;
 import lombok.Getter;

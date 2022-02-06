@@ -1,4 +1,4 @@
-package com.example.nnk.controller;
+package com.example.nnk.sale.controller;
 
 
 import org.springframework.web.bind.annotation.*;
