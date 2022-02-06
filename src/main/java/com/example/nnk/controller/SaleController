@@ -10,6 +10,7 @@ public class SaleController {
     @PostMapping("/")
     public void crateSales(@RequestBody String Log) {
         System.out.println("create Sale Log");
+        System.out.println("test");
     }
 
 }
